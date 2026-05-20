@@ -1,110 +1,110 @@
 {
-  "updated": "2026-05-20T16:24:36.974Z",
+  "updated": "2026-05-20T16:52:03.362688+00:00",
   "tools": {
     "rtk": {
-      "stars": 28600,
-      "lastRelease": "2026-05",
-      "contributors": 5
+      "stars": 51741,
+      "lastRelease": "2026-05-13",
+      "contributors": 92
     },
     "lean-ctx": {
-      "stars": 1500,
-      "lastRelease": "2026-04",
-      "contributors": 1
+      "stars": 1980,
+      "lastRelease": "2026-05-20",
+      "contributors": 22
     },
     "Headroom": {
-      "stars": 1700,
-      "lastRelease": "2026-05",
-      "contributors": 1
+      "stars": 1912,
+      "lastRelease": "2026-05-20",
+      "contributors": 34
     },
     "Context Mode": {
-      "stars": 14300,
-      "lastRelease": "2026-04",
-      "contributors": 1
+      "stars": 15245,
+      "lastRelease": "2026-05-20",
+      "contributors": 86
     },
     "token-optimizer-mcp": {
-      "stars": 24,
-      "lastRelease": "2025-11",
-      "contributors": 1
+      "stars": 391,
+      "lastRelease": "2025-11-02",
+      "contributors": 3
     },
     "Serena": {
-      "stars": 24100,
-      "lastRelease": "2026-05",
-      "contributors": 3
+      "stars": 24421,
+      "lastRelease": "2026-05-18",
+      "contributors": 181
     },
     "CodeGraph": {
-      "stars": 4600,
-      "lastRelease": "2026-05",
-      "contributors": 1
+      "stars": 8572,
+      "lastRelease": "2026-05-19",
+      "contributors": 12
     },
     "Context+": {
-      "stars": 100,
-      "lastRelease": "2026-03",
-      "contributors": 1
+      "stars": 1900,
+      "lastRelease": "2026-05-02",
+      "contributors": 13
     },
     "GitNexus": {
-      "stars": 28000,
-      "lastRelease": "2026-05",
-      "contributors": 1
+      "stars": 39300,
+      "lastRelease": "2026-05-16",
+      "contributors": 125
     },
     "code-review-graph": {
-      "stars": 50,
-      "lastRelease": "2026-04",
-      "contributors": 1
+      "stars": 16986,
+      "lastRelease": "2026-05-08",
+      "contributors": 78
     },
     "tokensave": {
-      "stars": 5,
-      "lastRelease": "2026-03",
-      "contributors": 1
+      "stars": 128,
+      "lastRelease": "2026-05-20",
+      "contributors": 10
     },
     "Claude Context": {
-      "stars": 5000,
-      "lastRelease": "2026-05",
-      "contributors": 3
+      "stars": 11483,
+      "lastRelease": "2026-05-06",
+      "contributors": 23
     },
     "MCP Language Server": {
-      "stars": 700,
-      "lastRelease": "2026-03",
-      "contributors": 1
+      "stars": 1531,
+      "lastRelease": "2025-05-16",
+      "contributors": 4
     },
     "Semble": {
-      "stars": 4,
-      "lastRelease": "2026-04",
-      "contributors": 5
+      "stars": 3268,
+      "lastRelease": "2026-05-19",
+      "contributors": 4
     },
     "Token Savior": {
-      "stars": 100,
-      "lastRelease": "2026-04",
-      "contributors": 1
+      "stars": 891,
+      "lastRelease": "2026-05-18",
+      "contributors": 7
     },
     "Caveman": {
-      "stars": 55100,
-      "lastRelease": "2026-05",
-      "contributors": 1
+      "stars": 62675,
+      "lastRelease": "2026-05-12",
+      "contributors": 29
     },
     "claude-token-optimizer": {
-      "stars": 5,
-      "lastRelease": "2026-03",
+      "stars": 419,
+      "lastRelease": "2026-05-19",
       "contributors": 1
     },
     "claude-token-efficient": {
-      "stars": 14,
-      "lastRelease": "2026-04",
-      "contributors": 1
+      "stars": 5374,
+      "lastRelease": "2026-04-22",
+      "contributors": 6
     },
     "memsearch": {
-      "stars": 2000,
-      "lastRelease": "2026-05",
-      "contributors": 3
+      "stars": 1789,
+      "lastRelease": "2026-05-18",
+      "contributors": 14
     },
     "ClaudeMem": {
-      "stars": 800,
-      "lastRelease": "2026-04",
-      "contributors": 1
+      "stars": 77027,
+      "lastRelease": "2026-05-12",
+      "contributors": 108
     },
     "token-optimizer": {
-      "stars": 930,
-      "lastRelease": "2026-05",
-      "contributors": 1
+      "stars": 1045,
+      "lastRelease": "2026-05-19",
+      "contributors": 4
     }
   }
 }
