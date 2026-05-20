@@ -1,0 +1,650 @@
+[
+  {
+    "id": "rtk",
+    "name": "rtk",
+    "vendor": "rtk-ai/rtk",
+    "url": "https://github.com/rtk-ai/rtk",
+    "failure": "1",
+    "failureLabel": "FAIL MODE 01",
+    "tagline": "Rust binary that compresses shell command output via PreToolUse hook. Rewrites about 100 supported commands (git, cargo, npm, find, grep, pytest) before output enters the agent context.",
+    "meta": {
+      "License": "Apache-2.0 / MIT",
+      "Stars": "~28,600",
+      "Maintainers": "Team",
+      "Distribution": "brew tap · cargo · binaries",
+      "Apple Silicon": "Native",
+      "Agents": "Claude · Copilot · OpenCode"
+    },
+    "maintainer": "team",
+    "language": "Rust",
+    "license": "Apache-2.0 / MIT",
+    "indepEval": true,
+    "compactDesc": "Shell output compression via PreToolUse hook",
+    "observations": [
+      "Vendor reports 60–90% on CLI output (cargo test 91.8%, git status 80.8%, find 78.3%, grep 49.5%).",
+      "Third-party measurement (Patterson, Apr 2026): 1.33B tokens saved over 26,779 commands across one month on a single developer's production setup.",
+      "Documented silent-failure modes: PATH leak (issue #685), wrong-package collision, hook chain collision, cost regression #582.",
+      "Mitigations exist via a wrapper script. Hook PATH and stdout-to-pipe behavior need explicit handling."
+    ],
+    "stars": 28600,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "lean-ctx",
+    "name": "lean-ctx",
+    "vendor": "yvgude/lean-ctx",
+    "url": "https://github.com/yvgude/lean-ctx",
+    "failure": "1+3",
+    "failureLabel": "FAIL MODES 01 + 03",
+    "tagline": "Single Rust binary covering shell compression and MCP-based code retrieval together. 49+ MCP tools plus 90+ shell patterns. Tree-sitter signature extraction across 18 languages.",
+    "meta": {
+      "License": "Apache-2.0",
+      "Stars": "~1,500",
+      "Maintainers": "1",
+      "Distribution": "brew tap · npm · cargo",
+      "Apple Silicon": "Yes",
+      "Latest release": "v3.5.x (Apr 2026)"
+    },
+    "maintainer": "solo",
+    "language": "Rust",
+    "license": "Apache-2.0",
+    "indepEval": false,
+    "compactDesc": "Shell + MCP retrieval in one binary",
+    "observations": [
+      "Vendor reports 60–95% compression and up to 99% on cached re-reads (per-call metric).",
+      "No independent third-party measurement found.",
+      "Changelog documents production failure modes: 50 GB BM25 index on monorepos, daemon stale-binary mismatches, fork-bomb hook recursion (fixed Apr 2026).",
+      "License migrated from MIT to Apache-2.0 mid-project.",
+      "Shell-hook side overlaps directly with rtk. Co-installation is not supported."
+    ],
+    "stars": 1500,
+    "lastRelease": "2026-04"
+  },
+  {
+    "id": "Headroom",
+    "name": "Headroom",
+    "vendor": "chopratejas/headroom",
+    "url": "https://github.com/chopratejas/headroom",
+    "failure": "2",
+    "failureLabel": "FAIL MODE 02",
+    "tagline": "Transparent API proxy that compresses request payloads between agent and provider. SmartCrusher (JSON), CodeCompressor (AST-aware), Kompress-base (ModernBERT). CacheAligner preserves Anthropic prefix-cache eligibility.",
+    "meta": {
+      "License": "Apache-2.0",
+      "Stars": "~1,700",
+      "Maintainers": "1 + paid spinoff",
+      "Distribution": "pip · npm · docker",
+      "Apple Silicon": "Yes (Python 3.10+)",
+      "Latest release": "v0.21.20 (May 2026)"
+    },
+    "maintainer": "solo",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "indepEval": true,
+    "compactDesc": "Transparent API proxy + MCP tools",
+    "observations": [
+      "Vendor benchmarks reproducible via pytest: SQuAD v2 97% accuracy at 19% compression, BFCL 97% at 32%, GSM8K zero delta.",
+      "Patterson (Apr 2026): 189M tokens saved on top of rtk with 96% prefix-cache hit rate on real Claude Code traffic.",
+      "Bundles the rtk binary in installation. Designed to compose with rtk rather than replace it.",
+      "Proxy-based integration is the primary deployment path; MCP-tool and SDK modes also exist.",
+      "Single primary maintainer. Paid macOS desktop variant (closed-source) provides commercial sustainability signal."
+    ],
+    "stars": 1700,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "Context Mode",
+    "name": "Context Mode",
+    "vendor": "mksglu/context-mode",
+    "url": "https://github.com/mksglu/context-mode",
+    "failure": "2+5",
+    "failureLabel": "FAIL MODES 02 + 05",
+    "tagline": "Plugin + MCP server that sandboxes large tool outputs (Playwright snapshots, gh issue lists, logs) into local FTS5 SQLite storage, returns summaries. SQLite event capture for session continuity.",
+    "meta": {
+      "License": "MIT (was Elastic 2.0)",
+      "Stars": "~14,300",
+      "Maintainers": "1",
+      "Distribution": "plugin marketplace · npx",
+      "Apple Silicon": "Yes",
+      "Independent eval": "No"
+    },
+    "maintainer": "solo",
+    "language": "TypeScript",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "MCP tool output sandbox + session memory",
+    "observations": [
+      "Vendor numbers on tool-output sandboxing: Playwright snapshot 56 KB → 299 B, gh issue list 59 KB → 1.1 KB, access log 45 KB → 155 B.",
+      "Overlaps with Headroom MCP tools and proxy compression.",
+      "License recently changed from Elastic 2.0 to MIT.",
+      "Strongest fit for teams with significant Playwright or browser-automation workloads."
+    ],
+    "stars": 14300,
+    "lastRelease": "2026-04"
+  },
+  {
+    "id": "token-optimizer-mcp",
+    "name": "token-optimizer-mcp",
+    "vendor": "ooples/token-optimizer-mcp",
+    "url": "https://github.com/ooples/token-optimizer-mcp",
+    "failure": "2",
+    "failureLabel": "FAIL MODE 02",
+    "tagline": "MCP server with 61 specialized tools for caching, compression, and analytics. Brotli compression of MCP tool outputs in external SQLite, plus ARIMA/LSTM predictive cache and PreToolUse/PostToolUse hooks.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "24",
+      "Maintainers": "1",
+      "Distribution": "npm global · hook scripts",
+      "Apple Silicon": "Yes",
+      "Latest release": "v5.0.1 (Nov 2025)"
+    },
+    "maintainer": "solo",
+    "language": "TypeScript",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Maximalist MCP cache + compression (61 tools)",
+    "observations": [
+      "Vendor claims 95%+ reduction across 38K \"operations\". Per-tool numbers (\"88% reduction\", \"91% reduction\") are uniform across 60+ tools, which suggests synthetic measurements.",
+      "Tool-bloat paradox: 61 registered MCP tools consume context-window real estate via tool definitions. Net effect on <200K context windows unclear.",
+      "Latest release November 2025; no releases in ~6 months as of May 2026.",
+      "Repo shows characteristic AI-generated-codebase signals: high single-author commit count, semantic-release pipelines, auto-installing hook scripts."
+    ],
+    "stars": 24,
+    "lastRelease": "2025-11"
+  },
+  {
+    "id": "Serena",
+    "name": "Serena",
+    "vendor": "oraios/serena",
+    "url": "https://github.com/oraios/serena",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "MCP server providing symbol-level code intelligence via per-language Language Servers. Exposes find_symbol, find_referencing_symbols, replace_symbol_body, insert_after_symbol, rename, plus a project memory store.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "~24,100",
+      "Maintainers": "Oraios (vendor)",
+      "Distribution": "uvx · uv tool install",
+      "PHP support": "Intelephense / Phpactor",
+      "Languages": "40+ via multilspy"
+    },
+    "maintainer": "vendor",
+    "language": "Python",
+    "license": "MIT",
+    "indepEval": true,
+    "compactDesc": "LSP-backed symbol queries via MCP",
+    "observations": [
+      "ManoMano Tech benchmark (Feb 2026, 36k LOC Java): described as \"must-have\" on multi-file refactors. 4x cost increase and 60% slower than vanilla agent grep on trivial read-only lookups.",
+      "Cold-start LSP warmup on large repos can take 10–60 seconds on the first query of a session.",
+      "Commercial sustainability via paid JetBrains plugin; OSS core stays free.",
+      "Installation via uvx adds uv and per-language LSPs to the provisioning surface.",
+      "Maintainers explicitly discourage plugin-marketplace installs."
+    ],
+    "stars": 24100,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "CodeGraph",
+    "name": "CodeGraph",
+    "vendor": "colbymchenry/codegraph",
+    "url": "https://github.com/colbymchenry/codegraph",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "Local SQLite-backed call graph built from tree-sitter. Pre-indexed at init, instant queries thereafter. 19 supported languages, PHP not included.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "~4,600",
+      "Maintainers": "1",
+      "Distribution": "npm (better-sqlite3)",
+      "PHP support": "No",
+      "Agents": "Claude · Cursor · Codex · OpenCode",
+      "OS": "Windows · macOS · Linux",
+      "Latest release": "v0.7.9"
+    },
+    "maintainer": "solo",
+    "language": "TypeScript",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Static call graph via tree-sitter + SQLite",
+    "observations": [
+      "Vendor headline (README, May 2026): 94% fewer tool calls and 77% faster exploration across 6 benchmark codebases including the Swift compiler at 25,874 files with zero file reads.",
+      "Per-codebase numbers in the README range from 93–96% fewer calls and 43–82% faster, depending on language and size.",
+      "No independent third-party reproduction.",
+      "Mechanism is mechanically credible: pre-indexed call graph collapses grep fan-out into single MCP tool calls.",
+      "Star count grew from ~1.2k to ~4.6k between March and May 2026, driven by community marketing posts.",
+      "better-sqlite3 native dep requires Xcode CLT on macOS; WASM fallback documented as 5–10x slower.",
+      "Upstream of tokensave (the Rust port).",
+      "Single-author project despite the rapid star growth. Bus factor is unchanged by adoption rate."
+    ],
+    "stars": 4600,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "Context+",
+    "name": "Context+",
+    "vendor": "forloopcodes/contextplus",
+    "url": "https://github.com/ForLoopCodes/contextplus",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "MCP server combining RAG, Tree-sitter AST, Spectral Clustering, and Obsidian-style linking. Turns a codebase into a hierarchical feature graph with semantic clustering. Requires Ollama for embeddings and chat models.",
+    "meta": {
+      "License": "Not verified at time of cataloguing",
+      "Stars": "Small (verify at repo)",
+      "Maintainers": "1",
+      "Distribution": "bunx contextplus",
+      "External deps": "Ollama (embed + chat models)",
+      "Agents": "Claude · Cursor · Windsurf · VS Code"
+    },
+    "maintainer": "solo",
+    "language": "TypeScript",
+    "license": "Unverified",
+    "indepEval": false,
+    "compactDesc": "Spectral-clustering RAG over tree-sitter AST",
+    "observations": [
+      "Vendor claim: \"99% accuracy\". No published benchmark methodology found.",
+      "Distinguishing mechanism: spectral clustering on file embeddings groups semantically related files into labelled clusters.",
+      "Requires running Ollama locally as the embedding and chat provider, which adds a separate model-management surface to the install.",
+      "OLLAMA_API_KEY is required in config even though Ollama is typically run locally without auth, which is unusual.",
+      "License not explicitly visible from search results; verify before any commercial use.",
+      "Distribution via bunx requires Bun runtime, distinct from npm/uvx-based competitors in the catalogue."
+    ],
+    "stars": 100,
+    "lastRelease": "2026-03"
+  },
+  {
+    "id": "GitNexus",
+    "name": "GitNexus",
+    "vendor": "abhigyanpatwari/GitNexus",
+    "url": "https://github.com/abhigyanpatwari/GitNexus",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "CLI + MCP server that indexes a repo into a property graph (LadybugDB, formerly KuzuDB) via Tree-sitter AST. Tracks call chains, dependencies, inheritance, execution flow. Optional in-browser embeddings. Auto-generates AGENTS.md / CLAUDE.md.",
+    "meta": {
+      "License": "OSS + commercial license required for commercial use",
+      "Stars": "~28,000+",
+      "Maintainers": "1 primary + 45 contributors",
+      "Distribution": "npx gitnexus · web app",
+      "Languages": "12 (incl. PHP)",
+      "Agents": "Claude · Cursor · Codex · Cline · Roo · Windsurf",
+      "Commercial entity": "akonlabs.com"
+    },
+    "maintainer": "solo",
+    "language": "TypeScript",
+    "license": "Custom",
+    "indepEval": false,
+    "compactDesc": "Knowledge graph via Tree-sitter + KuzuDB",
+    "observations": [
+      "Star count grew from ~10k (March 2026, Paperclipped article) to ~28k+ (April 2026, MarkTechPost). Substantial community adoption signal.",
+      "License is dual: OSS for personal use, commercial license required for commercial use. Material consideration for consultancies and any non-personal deployment.",
+      "Backed by a commercial entity (akonlabs.com) offering managed SaaS and self-hosted enterprise options.",
+      "Deeper Claude Code integration than most: MCP tools, four agent skills (Exploring, Debugging, Impact Analysis, Refactoring), PreToolUse + PostToolUse hooks, auto-generated AGENTS.md / CLAUDE.md.",
+      "Distinguishing mechanism: precomputed property graph at index time, not embedding-similarity retrieval. Designed for structural queries (\"what depends on this?\") rather than semantic ones.",
+      "Optional Leiden community detection generates per-module SKILL.md files under .claude/skills/generated/.",
+      "45 GitHub contributors per MarkTechPost article, but commit-graph concentration on single primary author keeps it classified as solo by our methodology. Vendor-affiliated alternative.",
+      "Browser-only mode runs entirely client-side via WebAssembly (Tree-sitter WASM, LadybugDB WASM, transformers.js embeddings). No data leaves the browser in that mode."
+    ],
+    "stars": 28000,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "code-review-graph",
+    "name": "code-review-graph",
+    "vendor": "tirth8205/code-review-graph",
+    "url": "https://github.com/tirth8205/code-review-graph",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "Tree-sitter pre-built structural map of a repository written to SQLite. Parses functions, classes, imports, call relationships, inheritance, and test dependencies. Framed for code review and blast-radius analysis.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "small",
+      "Maintainers": "1",
+      "Distribution": "Source build",
+      "Apple Silicon": "Source build",
+      "Independent eval": "No"
+    },
+    "maintainer": "solo",
+    "language": "Python",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Structural graph for blast-radius queries",
+    "observations": [
+      "Surfaced by the Milvus context-management roundup (May 2026).",
+      "Same mechanical category as CodeGraph (tree-sitter → SQLite) but framed for review/blast-radius.",
+      "Answers structural questions rather than semantic ones. Complementary to vector-search retrieval.",
+      "Maturity, language coverage, and community signal all need separate verification before any pilot."
+    ],
+    "stars": 50,
+    "lastRelease": "2026-04"
+  },
+  {
+    "id": "tokensave",
+    "name": "tokensave",
+    "vendor": "aovestdipaperino/tokensave",
+    "url": "https://github.com/aovestdipaperino/tokensave",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "Rust port of CodeGraph. Single binary, native PreToolUse hook in Rust, libSQL + FTS5 + vectors. 15 languages including native PHP and Ruby via tree-sitter. Idempotent installer and built-in diagnostics.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "5",
+      "Maintainers": "1",
+      "Distribution": "brew tap · scoop · cargo",
+      "Apple Silicon": "Native binary",
+      "Latest release": "v1.5.4 (Mar 2026)"
+    },
+    "maintainer": "solo",
+    "language": "Rust",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Rust port of CodeGraph with native PHP",
+    "observations": [
+      "No vendor or third-party measurement of token reduction available.",
+      "Two optional network calls: anonymous token-count upload to a Cloudflare Worker, and a GitHub version check. Upload defaults on.",
+      "Inherits architectural choices from upstream CodeGraph (also single-maintainer).",
+      "Native PHP support without external LSP is notable for Drupal-heavy stacks.",
+      "Star count and contributor count are the lowest in this survey."
+    ],
+    "stars": 5,
+    "lastRelease": "2026-03"
+  },
+  {
+    "id": "Claude Context",
+    "name": "Claude Context",
+    "vendor": "zilliztech/claude-context",
+    "url": "https://github.com/zilliztech/claude-context",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "MCP server doing hybrid BM25 + dense-vector code search via Milvus. Requires Zilliz Cloud or local Milvus plus an embedding API provider.",
+    "meta": {
+      "License": "Apache-2.0",
+      "Stars": "Active",
+      "Maintainers": "Zilliztech (vendor)",
+      "External deps": "Milvus + embeddings API",
+      "Recurring cost": "Yes (embedding tokens)",
+      "Apple Silicon": "Yes (cloud-dependent)"
+    },
+    "maintainer": "vendor",
+    "language": "TypeScript",
+    "license": "Apache-2.0",
+    "indepEval": true,
+    "compactDesc": "Hybrid BM25 + vector code search (Milvus)",
+    "observations": [
+      "Augment Code internal benchmark reports ~40% token reduction at equivalent retrieval quality.",
+      "External-service requirement introduces a recurring spend line separate from the coding-agent bill.",
+      "Client codebases under NDA require explicit sign-off before being embedded by third-party providers.",
+      "Strongest fit for semantic (\"find authentication logic\") queries that don't map to specific symbols.",
+      "Recommended by its own vendor in the May 2026 Milvus roundup. Vendor affiliation noted."
+    ],
+    "stars": 5000,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "MCP Language Server",
+    "name": "MCP Language Server",
+    "vendor": "isaacphi/mcp-language-server",
+    "url": "https://github.com/isaacphi/mcp-language-server",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "Thin LSP-over-MCP wrapper exposing raw primitives: definition, references, rename, diagnostics, code lens. No memory layer, no project context, no symbolic editing abstractions.",
+    "meta": {
+      "License": "BSD",
+      "Stars": "~700",
+      "Maintainers": "1",
+      "Distribution": "go install · binary",
+      "PHP support": "via LSP backend",
+      "Apple Silicon": "Native"
+    },
+    "maintainer": "solo",
+    "language": "Go",
+    "license": "BSD",
+    "indepEval": false,
+    "compactDesc": "Raw LSP primitives exposed over MCP",
+    "observations": [
+      "Functionally a subset of Serena, using the same LSP foundation without higher-level operations.",
+      "Smaller surface area, simpler dependency tree.",
+      "No published benchmarks or independent measurements."
+    ],
+    "stars": 700,
+    "lastRelease": "2026-03"
+  },
+  {
+    "id": "Semble",
+    "name": "Semble",
+    "vendor": "MinishLab/semble",
+    "url": "https://github.com/MinishLab/semble",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "Local code search via static Model2Vec embeddings (potion-code-16M) + BM25 fused via RRF, with code-aware reranking. CPU-only, no transformers at runtime, no API keys, no GPU, no Milvus. Drop-in MCP for Claude Code, Cursor, Codex, OpenCode.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "4 (newly launched HN)",
+      "Maintainers": "MinishLab (2 named)",
+      "Distribution": "pip · uvx",
+      "Apple Silicon": "CPU-only (any arch)",
+      "Latest release": "v0.1.0 (Apr 2026)"
+    },
+    "maintainer": "team",
+    "language": "Python",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Local vector search via 16M static model",
+    "observations": [
+      "Vendor benchmark: 0.854 NDCG@10 across 1,250 query/doc pairs over 63 repos in 19 languages, vs 0.862 for CodeRankEmbed Hybrid (137M-param transformer). 99% of best transformer quality at ~218x faster indexing and ~11x faster queries.",
+      "Vendor claims 98% fewer tokens than grep+read. No independent reproduction yet (project launched on Hacker News May 2026).",
+      "Removes the cost+NDA deal-breaker that affects Claude Context (no embedding API, no Milvus, no cloud). Stack runs entirely on the developer's machine.",
+      "MinishLab also maintains Model2Vec (the underlying embedding library) and ships potion-code-16M on HuggingFace, providing organizational backing beyond a single repo.",
+      "Distribution via uvx adds uv to the provisioning surface; same dependency footprint as Serena. No native deps beyond standard scientific Python."
+    ],
+    "stars": 4,
+    "lastRelease": "2026-04"
+  },
+  {
+    "id": "Token Savior",
+    "name": "Token Savior",
+    "vendor": "Mibayy/token-savior",
+    "url": "https://github.com/Mibayy/token-savior",
+    "failure": "4",
+    "failureLabel": "FAIL MODE 04",
+    "tagline": "MCP server for progressive code reading. Returns summary → snippet → full file on demand instead of dumping whole files into context by default.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "small",
+      "Maintainers": "1",
+      "Distribution": "MCP server",
+      "Apple Silicon": "Yes",
+      "Independent eval": "No"
+    },
+    "maintainer": "solo",
+    "language": "TypeScript",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Progressive file reading via MCP",
+    "observations": [
+      "Surfaced by the Milvus context-management roundup (May 2026).",
+      "Three-layer pattern (summary → snippet → full file) mirrors how developers actually navigate code.",
+      "Conceptually overlaps with Serena's symbol queries; differentiated by progressive-expansion API.",
+      "Maturity, language coverage, and community signal need separate verification."
+    ],
+    "stars": 100,
+    "lastRelease": "2026-04"
+  },
+  {
+    "id": "Caveman",
+    "name": "Caveman",
+    "vendor": "JuliusBrussee/caveman",
+    "url": "https://github.com/JuliusBrussee/caveman",
+    "failure": "4",
+    "failureLabel": "FAIL MODE 04",
+    "tagline": "Claude Code skill plus plugin and rule files for other agents. Instructional only: directs the model to drop articles, hedging, and pleasantries, with intensity levels (lite, full, ultra, wenyan).",
+    "meta": {
+      "License": "MIT",
+      "Stars": "~55,100",
+      "Maintainers": "1",
+      "Distribution": "plugin marketplace · npx",
+      "Effect target": "Output tokens + next-turn context",
+      "Independent eval": "Yes (Guzik, Pillitteri)"
+    },
+    "maintainer": "solo",
+    "language": "Markdown",
+    "license": "MIT",
+    "indepEval": true,
+    "compactDesc": "Output-terseness skill (lite/full/ultra)",
+    "observations": [
+      "Vendor benchmark: 65% output reduction (range 22–87%) vs \"answer concisely\" baseline.",
+      "Guzik (Apr 2026) replication on Sonnet and Opus: 14–21% real-world output savings.",
+      "Pillitteri field test (PHP and Python, one week): 15–25% reduction with quality preserved on mechanical tasks, degraded on architectural discussion and onboarding.",
+      "Output tokens are the smaller share of coding-session cost; net session impact correspondingly smaller than the headline.",
+      "`ultra` mode produces telegraphic output that may not suit client-facing PR descriptions or code review."
+    ],
+    "stars": 55100,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "claude-token-optimizer",
+    "name": "claude-token-optimizer",
+    "vendor": "nadimtuhin/claude-token-optimizer",
+    "url": "https://github.com/nadimtuhin/claude-token-optimizer",
+    "failure": "4",
+    "failureLabel": "FAIL MODE 04",
+    "tagline": "Bash init.sh that scaffolds a documentation layout (CLAUDE.md, .claudeignore, .claude/ tree). Framework-specific examples for Express/Next/Vue/Nuxt/Angular/Django/Rails/NestJS/Laravel.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "5",
+      "Maintainers": "1",
+      "Distribution": "curl | bash",
+      "Language": "100% Shell",
+      "Latest release": "No releases (12 commits)"
+    },
+    "maintainer": "solo",
+    "language": "Shell",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "CLAUDE.md docs scaffolder via curl|bash",
+    "observations": [
+      "Vendor claims 90% reduction (11K → 1.3K tokens) measured on the author's own bloated repo. Result depends on pre-existing doc bloat.",
+      "curl | bash install pattern from a 5-star, single-maintainer repo.",
+      "Pure file-system scaffolding. Works with anything that reads CLAUDE.md + .claudeignore.",
+      "No package, no plugin, no MCP. No releases yet; 12 commits."
+    ],
+    "stars": 5,
+    "lastRelease": "2026-03"
+  },
+  {
+    "id": "claude-token-efficient",
+    "name": "claude-token-efficient",
+    "vendor": "drona23/claude-token-efficient",
+    "url": "https://github.com/drona23/claude-token-efficient",
+    "failure": "4",
+    "failureLabel": "FAIL MODE 04",
+    "tagline": "Single CLAUDE.md file (plus three optional profiles: coding, agents, analysis) containing roughly 12 rules banning sycophantic openers/closings, em-dashes, prompt restatement, \"As an AI...\" framing, scope creep.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "14",
+      "Maintainers": "1 (+ Claude-authored commits)",
+      "Distribution": "curl · git clone",
+      "Language": "100% Markdown",
+      "Independent eval": "Self-described directional only"
+    },
+    "maintainer": "solo",
+    "language": "Markdown",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "CLAUDE.md anti-sycophancy ruleset",
+    "observations": [
+      "Vendor 63% claim from a 5-prompt directional test; README admits \"not a statistically controlled study\" with \"no variance controls.\"",
+      "File itself adds persistent input-token overhead on every turn, which can flip net savings negative on short queries.",
+      "Issue #1 (2026-04-01): shorter 7–12-line configs outperform the full rule set.",
+      "Co-author \"claude\" suggests file is Claude-generated. Low supply-chain risk (Markdown only)."
+    ],
+    "stars": 14,
+    "lastRelease": "2026-04"
+  },
+  {
+    "id": "memsearch",
+    "name": "memsearch",
+    "vendor": "zilliztech/memsearch",
+    "url": "https://github.com/zilliztech/memsearch",
+    "failure": "5",
+    "failureLabel": "FAIL MODE 05",
+    "tagline": "Markdown-first cross-session memory. Decisions stored as human-readable .md files; Milvus used as a rebuildable retrieval index. Progressive recall (search → expand → drill to transcript).",
+    "meta": {
+      "License": "Apache-2.0",
+      "Stars": "Active",
+      "Maintainers": "Zilliztech (vendor)",
+      "External deps": "Milvus (local or cloud)",
+      "Distribution": "npm / pip plugin",
+      "Apple Silicon": "Yes"
+    },
+    "maintainer": "vendor",
+    "language": "Python",
+    "license": "Apache-2.0",
+    "indepEval": false,
+    "compactDesc": "Markdown memory + Milvus retrieval",
+    "observations": [
+      "Surfaced by the Milvus context-management roundup (May 2026); same vendor.",
+      "Markdown-first storage means the memory artefact is human-editable, version-controllable, and survives loss of the vector index.",
+      "Cross-session, cross-agent, cross-model memory positioning.",
+      "Milvus dependency adds operational burden similar to Claude Context.",
+      "No independent third-party measurement."
+    ],
+    "stars": 2000,
+    "lastRelease": "2026-05"
+  },
+  {
+    "id": "ClaudeMem",
+    "name": "ClaudeMem",
+    "vendor": "thedotmack/claude-mem",
+    "url": "https://github.com/thedotmack/claude-mem",
+    "failure": "5",
+    "failureLabel": "FAIL MODE 05",
+    "tagline": "Persistent cross-session memory store for Claude Code. Vendor claim: 10x token savings on session startup by avoiding re-loading project context.",
+    "meta": {
+      "License": "Apache-2.0",
+      "Maintainers": "1",
+      "Distribution": "npm",
+      "Brand association": "$CMEM token (Solana)",
+      "Native alternative": "Anthropic compact_20260112 beta",
+      "Apple Silicon": "Yes"
+    },
+    "maintainer": "solo",
+    "language": "TypeScript",
+    "license": "Apache-2.0",
+    "indepEval": false,
+    "compactDesc": "Cross-session memory (with Solana token brand)",
+    "observations": [
+      "Project has an associated Solana token ($CMEM), unrelated to the OSS code but distinct from typical OSS tool brand profiles.",
+      "Anthropic's native compaction beta plus disciplined CLAUDE.md usage cover much of the same ground.",
+      "No independent third-party measurement found."
+    ],
+    "stars": 800,
+    "lastRelease": "2026-04"
+  },
+  {
+    "id": "token-optimizer",
+    "name": "token-optimizer",
+    "vendor": "alexgreensh/token-optimizer",
+    "url": "https://github.com/alexgreensh/token-optimizer",
+    "failure": "x",
+    "failureLabel": "CROSS-CUTTING",
+    "tagline": "Pure-stdlib telemetry plugin that reads Claude Code session JSONL files, scores session quality (S–F), profiles per-turn cost, detects anti-patterns, audits CLAUDE.md and MEMORY.md health.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "~930",
+      "Maintainers": "1",
+      "Distribution": "plugin marketplace (stdlib only)",
+      "Dependencies": "Zero (Python stdlib)",
+      "Blast radius": "Read-only audit"
+    },
+    "maintainer": "solo",
+    "language": "Python",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Passive session telemetry + dashboards",
+    "observations": [
+      "Passive observer: reads session JSONL, produces dashboards. No interception of the prompt chain.",
+      "v5 added bash output compression for 16 commands; overlaps with rtk if both run (disable via TOKEN_OPTIMIZER_BASH_COMPRESS=0).",
+      "An audit layer is the only way to make any other tool's savings measurable across a fleet rather than anecdotal."
+    ],
+    "stars": 930,
+    "lastRelease": "2026-05"
+  }
+]

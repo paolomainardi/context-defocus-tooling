@@ -1,0 +1,110 @@
+{
+  "updated": "2026-05-20T16:24:36.974Z",
+  "tools": {
+    "rtk": {
+      "stars": 28600,
+      "lastRelease": "2026-05",
+      "contributors": 5
+    },
+    "lean-ctx": {
+      "stars": 1500,
+      "lastRelease": "2026-04",
+      "contributors": 1
+    },
+    "Headroom": {
+      "stars": 1700,
+      "lastRelease": "2026-05",
+      "contributors": 1
+    },
+    "Context Mode": {
+      "stars": 14300,
+      "lastRelease": "2026-04",
+      "contributors": 1
+    },
+    "token-optimizer-mcp": {
+      "stars": 24,
+      "lastRelease": "2025-11",
+      "contributors": 1
+    },
+    "Serena": {
+      "stars": 24100,
+      "lastRelease": "2026-05",
+      "contributors": 3
+    },
+    "CodeGraph": {
+      "stars": 4600,
+      "lastRelease": "2026-05",
+      "contributors": 1
+    },
+    "Context+": {
+      "stars": 100,
+      "lastRelease": "2026-03",
+      "contributors": 1
+    },
+    "GitNexus": {
+      "stars": 28000,
+      "lastRelease": "2026-05",
+      "contributors": 1
+    },
+    "code-review-graph": {
+      "stars": 50,
+      "lastRelease": "2026-04",
+      "contributors": 1
+    },
+    "tokensave": {
+      "stars": 5,
+      "lastRelease": "2026-03",
+      "contributors": 1
+    },
+    "Claude Context": {
+      "stars": 5000,
+      "lastRelease": "2026-05",
+      "contributors": 3
+    },
+    "MCP Language Server": {
+      "stars": 700,
+      "lastRelease": "2026-03",
+      "contributors": 1
+    },
+    "Semble": {
+      "stars": 4,
+      "lastRelease": "2026-04",
+      "contributors": 5
+    },
+    "Token Savior": {
+      "stars": 100,
+      "lastRelease": "2026-04",
+      "contributors": 1
+    },
+    "Caveman": {
+      "stars": 55100,
+      "lastRelease": "2026-05",
+      "contributors": 1
+    },
+    "claude-token-optimizer": {
+      "stars": 5,
+      "lastRelease": "2026-03",
+      "contributors": 1
+    },
+    "claude-token-efficient": {
+      "stars": 14,
+      "lastRelease": "2026-04",
+      "contributors": 1
+    },
+    "memsearch": {
+      "stars": 2000,
+      "lastRelease": "2026-05",
+      "contributors": 3
+    },
+    "ClaudeMem": {
+      "stars": 800,
+      "lastRelease": "2026-04",
+      "contributors": 1
+    },
+    "token-optimizer": {
+      "stars": 930,
+      "lastRelease": "2026-05",
+      "contributors": 1
+    }
+  }
+}

@@ -1,0 +1,116 @@
+name: Refresh tool metrics
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # daily at 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch metrics from GitHub API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 << 'EOF'
+          import json, os, subprocess, sys
+          from datetime import datetime, timezone
+
+          def gh_api(path):
+              """Call GitHub API via gh CLI (handles auth automatically)."""
+              result = subprocess.run(
+                  ['gh', 'api', path, '--jq', '.'],
+                  capture_output=True, text=True
+              )
+              if result.returncode != 0:
+                  return None
+              return json.loads(result.stdout)
+
+          def get_contributor_count(owner, repo):
+              """Get contributor count via the contributors endpoint (per_page=1 + link header)."""
+              result = subprocess.run(
+                  ['gh', 'api', f'/repos/{owner}/{repo}/contributors',
+                   '--method', 'GET', '-f', 'per_page=1', '-f', 'anon=true',
+                   '--include'],
+                  capture_output=True, text=True
+              )
+              if result.returncode != 0:
+                  return None
+              # Parse Link header for last page number
+              for line in result.stdout.split('\n'):
+                  if line.lower().startswith('link:'):
+                      import re
+                      match = re.search(r'page=(\d+)>; rel="last"', line)
+                      if match:
+                          return int(match.group(1))
+              return 1
+
+          # Load tools.json
+          with open('tools.json', 'r') as f:
+              tools = json.load(f)
+
+          metrics = {'updated': datetime.now(timezone.utc).isoformat(), 'tools': {}}
+
+          for tool in tools:
+              url = tool.get('url', '')
+              if 'github.com' not in url:
+                  continue
+
+              # Extract owner/repo from URL
+              parts = url.rstrip('/').split('/')
+              try:
+                  idx = parts.index('github.com')
+                  owner = parts[idx + 1]
+                  repo = parts[idx + 2]
+              except (ValueError, IndexError):
+                  continue
+
+              print(f"Fetching: {owner}/{repo}", file=sys.stderr)
+
+              # Get repo info (stars, pushed_at)
+              repo_data = gh_api(f'/repos/{owner}/{repo}')
+              if not repo_data:
+                  print(f"  SKIP: API error", file=sys.stderr)
+                  continue
+
+              stars = repo_data.get('stargazers_count', 0)
+
+              # Get latest release
+              release_data = gh_api(f'/repos/{owner}/{repo}/releases/latest')
+              if release_data and 'published_at' in release_data:
+                  last_release = release_data['published_at'][:10]  # YYYY-MM-DD
+              else:
+                  # Fallback to pushed_at
+                  last_release = repo_data.get('pushed_at', '')[:10]
+
+              # Get contributor count
+              contributors = get_contributor_count(owner, repo)
+
+              metrics['tools'][tool['id']] = {
+                  'stars': stars,
+                  'lastRelease': last_release,
+                  'contributors': contributors
+              }
+
+              print(f"  stars={stars} release={last_release} contributors={contributors}", file=sys.stderr)
+
+          with open('metrics.json', 'w') as f:
+              json.dump(metrics, f, indent=2)
+
+          print(f"\nWrote metrics for {len(metrics['tools'])} tools.", file=sys.stderr)
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git diff --quiet metrics.json && echo "No changes" && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add metrics.json
+          git commit -m "chore: refresh tool metrics"
+          git push
