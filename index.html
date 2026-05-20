@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>defocus.tools — Token optimization tools for AI coding agents</title>
-<meta name="description" content="A community-built reference catalogue of token optimization and context management tools for AI coding agents (Claude Code, GitHub Copilot, OpenCode). Organized by failure mode, scored by community metrics." />
+<meta name="description" content="A community-built reference catalogue of token optimization and context management tools for AI coding agents. Organized by failure mode, scored by community metrics." />
 <meta name="keywords" content="claude code, github copilot, opencode, token optimization, context compression, MCP, AI coding agents, context defocus, defocus tools" />
 <meta property="og:title" content="defocus.tools" />
 <meta property="og:description" content="A reference catalogue of token optimization tools for AI coding agents. Filter by failure mode, language, license, supply-chain risk." />
@@ -608,10 +608,10 @@
     </div>
     <h1><img src="logo.svg" alt="defocus.tools logo" style="height: 1.1em; vertical-align: -0.15em; margin-right: 0.2em;" />defocus.tools<br><em>A working reference.</em></h1>
     <p class="subtitle">
-      A reference catalogue of open-source tools that address token consumption and context degradation in AI coding agents (Claude Code, GitHub Copilot, OpenCode). Organized by the failure mode each tool targets. Filter and sort by community metrics. Vendor claims are presented as such; independent measurements are cited when they exist.
+      A reference catalogue of open-source tools that address token waste and context degradation in AI coding agents. Organized by failure mode. Filtered and sorted by community metrics.
     </p>
     <div class="frame-note">
-      <strong>Context defocus.</strong> A 1M-token window with low-signal noise produces worse answers than 100K with focused information. The cost question (Copilot's usage-based billing transition on June 1, 2026) and the quality question are the same question. Each tool below targets one specific way agents lose signal: noisy command output, raw tool dumps, repeated codebase exploration, broad file reads, model verbosity, or memory loss across sessions.
+      <strong>The defocus problem.</strong> A 1M-token window filled with noise produces worse answers than 100K tokens of focused information. Cost and quality are the same question — every wasted token is both a dollar lost and signal displaced. Each tool below targets one specific way agents lose signal: noisy command output, raw tool dumps, repeated codebase exploration, broad file reads, model verbosity, or memory loss across sessions.
     </div>
 
     <div class="summary-bar">
@@ -803,7 +803,7 @@
         <h2 id="catalogue">One card per project.</h2>
       </div>
       <div class="section-note">
-        Star counts captured early-to-mid May 2026 from third-party crawlers. Risk dot derived mechanically from stars, contributors, eval presence, and release recency (thresholds in <a href="#methodology">methodology</a>).
+        Star counts and release dates refreshed daily via GitHub API. Risk dot derived mechanically from stars, contributors, eval presence, and release recency (thresholds in <a href="#methodology">methodology</a>).
       </div>
     </div>
 
@@ -869,7 +869,7 @@
       <ol>
         <li><strong>Which failure mode hurts your team the most?</strong> Without measurement, rollout order is guesswork. A passive telemetry tool in shadow mode for one week produces the data to decide.</li>
         <li><strong>Is transparent-proxy integration acceptable?</strong> Tools like Headroom intercept the agent → LLM API path. Whether this fits your security model is an organizational call, not a technical one.</li>
-        <li><strong>What is your bus-factor threshold?</strong> Thirteen of eighteen tools here are solo-maintained. Consistent thresholds (minimum stars, contributors, age, fork-and-mirror policy) help narrow categories with many candidates.</li>
+        <li><strong>What is your bus-factor threshold?</strong> Most tools in this catalogue are solo-maintained. Consistent thresholds (minimum stars, contributors, age, fork-and-mirror policy) help narrow categories with many candidates.</li>
         <li><strong>How do you handle vendor-affiliated open source?</strong> Some tools are maintained by commercial entities with adjacent paid products. Implications vary by case.</li>
         <li><strong>What is your NDA / client-code posture?</strong> Tools that phone home, route data through third-party services, or store project memory externally need an explicit policy decision relative to client contracts.</li>
         <li><strong>What is the relationship between tooling and org-level cost levers?</strong> Token-tooling is one cost lever. Model-selection policy, credit budgets, and prompt-caching discipline are independent levers operating in parallel.</li>
@@ -882,7 +882,7 @@
       <h3>Methodology and definitions</h3>
       <dl>
         <dt>Star count</dt>
-        <dd>Captured early-to-mid May 2026 from project pages and third-party crawlers. <strong>Directional, not precise.</strong> Daily delta is meaningful in this category.</dd>
+        <dd>Refreshed daily via GitHub API. <strong>Directional, not precise.</strong> Rapid growth is common in this category; daily delta is meaningful.</dd>
 
         <dt>Maintainer count</dt>
         <dd>Reflects recent commit-graph concentration, not the full GitHub contributors page. Drive-by typo PRs are not counted as multi-maintainer.</dd>
@@ -932,7 +932,7 @@
       </div>
       <div>
         <h4>Not covered here</h4>
-        <p>Org-level GitHub Copilot budget configuration. Model-selection routing policy. Internal training material for agent usage patterns. Procurement decisions around any of the listed tools. Closed-source or paid SaaS alternatives.</p>
+        <p>Org-level agent budget configuration and cost controls. Model-selection routing policy. Internal training material for agent usage patterns. Procurement decisions around any of the listed tools. Closed-source or paid SaaS alternatives.</p>
       </div>
       <div id="contribute">
         <h4>Contribute</h4>
