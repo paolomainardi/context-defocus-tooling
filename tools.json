@@ -646,5 +646,39 @@
     ],
     "stars": 930,
     "lastRelease": "2026-05"
+  },
+  {
+    "id": "graphify",
+    "name": "Graphify",
+    "vendor": "safishamsi/graphify",
+    "url": "https://github.com/safishamsi/graphify",
+    "failure": "3",
+    "failureLabel": "FAIL MODE 03",
+    "tagline": "Skill/CLI that maps a project — code, SQL schemas, shell, R, docs, PDFs, images, videos — into a queryable knowledge graph. Agents invoke `/graphify` and run scoped graph queries instead of grepping files; outputs include graph.html, GRAPH_REPORT.md, graph.json plus Mermaid call-flow export.",
+    "meta": {
+      "License": "MIT",
+      "Stars": "~52,700",
+      "Maintainers": "1",
+      "Distribution": "PyPI (graphifyy) · uv · pipx",
+      "Indexing": "Tree-sitter, multi-language (py · js · go · rs · jvm · rb · php · cs · swift · c · cpp · lua)",
+      "Agents": "Claude · Codex · OpenCode · Cursor · Gemini · Copilot · Aider · Antigravity · others",
+      "Latest release": "v0.8.17 (May 2026)"
+    },
+    "maintainer": "solo",
+    "language": "Python",
+    "license": "MIT",
+    "indepEval": false,
+    "compactDesc": "Multi-modal codebase knowledge graph queried as `/graphify` skill",
+    "observations": [
+      "Vendor positions tool as multi-modal: code, SQL schemas, shell, R, docs, PDFs, images, and videos folded into a single graph (README, May 2026).",
+      "Mechanism mirrors other FAIL MODE 03 tools: pre-built graph + scoped query path replaces repeated grep/file-read in an agent session.",
+      "Y Combinator S26 batch with commercial homepage at graphifylabs.ai; OSS code is MIT but project has vendor-adjacent funding and marketing.",
+      "Star count (~52.7k) and ~5.6k forks as of May 2026 vastly exceed typical solo-maintained OSS at the same release cadence; growth is best read as a marketing signal rather than a maturity signal.",
+      "Recent v0.8.17 (May 2026) shipped fixes for case-sensitive call resolution and cross-language phantom `calls` edges (#991, #993), indicating active correctness work on the graph builder.",
+      "Official PyPI package is `graphifyy` (double-y); other `graphify*` packages on PyPI are explicitly disclaimed as unaffiliated in the README.",
+      "No independent third-party measurement of token-saving or retrieval-quality claims."
+    ],
+    "stars": 52700,
+    "lastRelease": "2026-05"
   }
 ]
