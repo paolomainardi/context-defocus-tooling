@@ -383,7 +383,6 @@
     background: var(--bg-elevated); color: var(--ink-faint);
     font-size: 9px; text-transform: uppercase; letter-spacing: 0.16em;
     border-bottom: 2px solid var(--rule-strong); font-weight: 600;
-    position: sticky; top: 64px;
     cursor: pointer;
     user-select: none;
   }
@@ -452,6 +451,22 @@
     font-size: 9px;
     color: var(--ink-faint);
     font-weight: 600;
+  }
+  .compact-header div[data-sort] {
+    cursor: pointer;
+    user-select: none;
+  }
+  .compact-header div[data-sort]:hover { color: var(--ink); }
+  .compact-header div[data-sort] .sort-indicator {
+    display: inline-block;
+    margin-left: 4px;
+    opacity: 0.3;
+    font-size: 8px;
+  }
+  .compact-header div[data-sort].sort-asc .sort-indicator,
+  .compact-header div[data-sort].sort-desc .sort-indicator {
+    opacity: 1;
+    color: var(--accent);
   }
 
   /* EMPTY STATE */
@@ -640,73 +655,6 @@
   </div>
 </header>
 
-<div class="controls">
-  <div class="container">
-    <div class="controls-inner">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="search by name, repo, or description..." />
-      </div>
-      <div class="filter-group">
-        <label class="filter-label">failure mode</label>
-        <select class="filter" id="filterFailure">
-          <option value="">All modes</option>
-          <option value="1">01 · Noisy terminal logs</option>
-          <option value="2">02 · Tool output flooding</option>
-          <option value="3">03 · Repeated codebase navigation</option>
-          <option value="4">04 · File reads / verbose output</option>
-          <option value="5">05 · Memory gaps across sessions</option>
-          <option value="x">Cross-cutting (telemetry)</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <label class="filter-label">language</label>
-        <select class="filter" id="filterLanguage">
-          <option value="">All languages</option>
-          <option value="Rust">Rust</option>
-          <option value="Python">Python</option>
-          <option value="TypeScript">TypeScript</option>
-          <option value="Go">Go</option>
-          <option value="Shell">Shell</option>
-          <option value="Markdown">Markdown</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <label class="filter-label">license</label>
-        <select class="filter" id="filterLicense">
-          <option value="">All licenses</option>
-          <option value="MIT">MIT</option>
-          <option value="Apache-2.0">Apache-2.0</option>
-          <option value="BSD">BSD</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <label class="filter-label">maintainer</label>
-        <select class="filter" id="filterMaintainer">
-          <option value="">All</option>
-          <option value="team">Team / multi-contributor</option>
-          <option value="vendor">Commercial vendor</option>
-          <option value="solo">Solo maintainer</option>
-        </select>
-      </div>
-      <div class="filter-group">
-        <label class="filter-label">eval</label>
-        <select class="filter" id="filterEval">
-          <option value="">All</option>
-          <option value="yes">Has independent eval</option>
-          <option value="no">Vendor-only / none</option>
-        </select>
-      </div>
-      <div class="view-toggle">
-        <button class="active" data-view="cards">Cards</button>
-        <button data-view="matrix">Matrix</button>
-        <button data-view="compact">Compact</button>
-      </div>
-      <span class="count-badge"><span class="num" id="visibleCount">18</span> of <span id="totalCount">18</span></span>
-      <button class="reset-btn" id="resetBtn">Reset</button>
-    </div>
-  </div>
-</div>
-
 <section>
   <div class="container">
     <div class="section-header">
@@ -796,6 +744,73 @@
   </div>
 </section>
 
+<div class="controls">
+  <div class="container">
+    <div class="controls-inner">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="search by name, repo, or description..." />
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">failure mode</label>
+        <select class="filter" id="filterFailure">
+          <option value="">All modes</option>
+          <option value="1">01 · Noisy terminal logs</option>
+          <option value="2">02 · Tool output flooding</option>
+          <option value="3">03 · Repeated codebase navigation</option>
+          <option value="4">04 · File reads / verbose output</option>
+          <option value="5">05 · Memory gaps across sessions</option>
+          <option value="x">Cross-cutting (telemetry)</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">language</label>
+        <select class="filter" id="filterLanguage">
+          <option value="">All languages</option>
+          <option value="Rust">Rust</option>
+          <option value="Python">Python</option>
+          <option value="TypeScript">TypeScript</option>
+          <option value="Go">Go</option>
+          <option value="Shell">Shell</option>
+          <option value="Markdown">Markdown</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">license</label>
+        <select class="filter" id="filterLicense">
+          <option value="">All licenses</option>
+          <option value="MIT">MIT</option>
+          <option value="Apache-2.0">Apache-2.0</option>
+          <option value="BSD">BSD</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">maintainer</label>
+        <select class="filter" id="filterMaintainer">
+          <option value="">All</option>
+          <option value="team">Team / multi-contributor</option>
+          <option value="vendor">Commercial vendor</option>
+          <option value="solo">Solo maintainer</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">eval</label>
+        <select class="filter" id="filterEval">
+          <option value="">All</option>
+          <option value="yes">Has independent eval</option>
+          <option value="no">Vendor-only / none</option>
+        </select>
+      </div>
+      <div class="view-toggle">
+        <button class="active" data-view="cards">Cards</button>
+        <button data-view="matrix">Matrix</button>
+        <button data-view="compact">Compact</button>
+      </div>
+      <span class="count-badge"><span class="num" id="visibleCount">18</span> of <span id="totalCount">18</span></span>
+      <button class="reset-btn" id="resetBtn">Reset</button>
+    </div>
+  </div>
+</div>
+
 <section>
   <div class="container">
     <div class="section-header">
@@ -840,13 +855,13 @@
 
     <div class="compact-list" id="compactList" style="display: none;">
       <div class="compact-row compact-header">
-        <div>Tool</div>
-        <div>Mode</div>
-        <div>Lang</div>
-        <div>Stars</div>
-        <div>Maintainers</div>
+        <div data-sort="name">Tool <span class="sort-indicator">&#x25BC;</span></div>
+        <div data-sort="failure">Mode <span class="sort-indicator">&#x25BC;</span></div>
+        <div data-sort="language">Lang <span class="sort-indicator">&#x25BC;</span></div>
+        <div data-sort="stars">Stars <span class="sort-indicator">&#x25BC;</span></div>
+        <div data-sort="maintainer">Maintainers <span class="sort-indicator">&#x25BC;</span></div>
         <div>What it does</div>
-        <div>Risk</div>
+        <div data-sort="risk">Risk <span class="sort-indicator">&#x25BC;</span></div>
       </div>
       <!-- Compact rows rendered here by JS -->
     </div>
@@ -1044,11 +1059,11 @@
     const tbody = document.getElementById('matrixBody');
     tbody.innerHTML = tools.map(t => `
       <tr data-tool-id="${t.id}" data-failure="${t.failure}" data-language="${t.language}" data-license="${t.license}" data-maintainer="${t.maintainer}" data-eval="${t.indepEval ? 'yes' : 'no'}" data-search="${(t.name + ' ' + t.vendor + ' ' + t.tagline).toLowerCase()}" data-stars="${t.stars}" data-lastrelease="${t.lastRelease}" data-risk-level="${t.risk.level}">
-        <td><a href="${t.url}" target="_blank" rel="noopener">${t.name}${extIcon}</a></td>
+        <td><a href="${t.url}" target="_blank" rel="noopener">${t.name}</a></td>
         <td>${t.failure}</td>
         <td>${t.language}</td>
         <td>${t.license}</td>
-        <td><span class="num">${t.meta.Stars || t.stars}</span></td>
+        <td><span class="num">${t.stars.toLocaleString()}</span></td>
         <td>${t.maintainer === 'team' ? 'Team' : t.maintainer === 'vendor' ? 'Vendor' : 'Solo'}</td>
         <td>${t.lastRelease}</td>
         <td>${t.indepEval ? 'Yes' : 'No'}</td>
@@ -1061,11 +1076,11 @@
     const list = document.getElementById('compactList');
     const header = list.querySelector('.compact-header');
     const rowsHtml = tools.map(t => `
-      <div class="compact-row" data-tool-id="${t.id}" data-failure="${t.failure}" data-language="${t.language}" data-license="${t.license}" data-maintainer="${t.maintainer}" data-eval="${t.indepEval ? 'yes' : 'no'}" data-search="${(t.name + ' ' + t.vendor + ' ' + t.tagline).toLowerCase()}" data-stars="${t.stars}">
+      <div class="compact-row" data-tool-id="${t.id}" data-failure="${t.failure}" data-language="${t.language}" data-license="${t.license}" data-maintainer="${t.maintainer}" data-eval="${t.indepEval ? 'yes' : 'no'}" data-search="${(t.name + ' ' + t.vendor + ' ' + t.tagline).toLowerCase()}" data-stars="${t.stars}" data-risk-level="${t.risk.level}" data-name="${t.name.toLowerCase()}">
         <div class="tool-name-compact"><a href="${t.url}" target="_blank" rel="noopener">${t.name}</a></div>
         <div class="meta-cell">${t.failure}</div>
         <div class="meta-cell">${t.language}</div>
-        <div class="meta-cell"><span class="num">${t.meta.Stars || t.stars}</span></div>
+        <div class="meta-cell"><span class="num">${t.stars.toLocaleString()}</span></div>
         <div class="meta-cell">${t.maintainer === 'team' ? 'Team' : t.maintainer === 'vendor' ? 'Vendor' : 'Solo'}</div>
         <div class="meta-cell">${t.compactDesc}</div>
         <div><span class="risk-dot risk-${t.risk.level}">${t.risk.label}</span></div>
@@ -1146,7 +1161,7 @@
   }
 
   // ============================================================
-  // SORTING (matrix only)
+  // SORTING (matrix + compact)
   // ============================================================
   function sortMatrix(field, dir) {
     const tbody = document.getElementById('matrixBody');
@@ -1185,6 +1200,50 @@
     });
   }
 
+  function sortCompact(field, dir) {
+    const list = document.getElementById('compactList');
+    const header = list.querySelector('.compact-header');
+    const rows = Array.from(list.querySelectorAll('.compact-row:not(.compact-header)'));
+
+    const riskOrder = { low: 1, mid: 2, high: 3, crit: 4 };
+    rows.sort((a, b) => {
+      let av, bv;
+      if (field === 'stars') {
+        av = parseInt(a.dataset.stars) || 0;
+        bv = parseInt(b.dataset.stars) || 0;
+      } else if (field === 'risk') {
+        av = riskOrder[a.dataset.riskLevel] || 99;
+        bv = riskOrder[b.dataset.riskLevel] || 99;
+      } else if (field === 'name') {
+        av = a.dataset.name || '';
+        bv = b.dataset.name || '';
+      } else if (field === 'failure') {
+        av = a.dataset.failure || '';
+        bv = b.dataset.failure || '';
+      } else if (field === 'language') {
+        av = a.dataset.language || '';
+        bv = b.dataset.language || '';
+      } else if (field === 'maintainer') {
+        av = a.dataset.maintainer || '';
+        bv = b.dataset.maintainer || '';
+      } else {
+        av = ''; bv = '';
+      }
+      if (av < bv) return dir === 'asc' ? -1 : 1;
+      if (av > bv) return dir === 'asc' ? 1 : -1;
+      return 0;
+    });
+
+    // Re-append in sorted order
+    rows.forEach(r => list.appendChild(r));
+
+    // Update header indicators
+    header.querySelectorAll('div[data-sort]').forEach(div => {
+      div.classList.remove('sort-asc', 'sort-desc');
+      if (div.dataset.sort === field) div.classList.add('sort-' + dir);
+    });
+  }
+
   // ============================================================
   // URL HASH PERSISTENCE
   // ============================================================
@@ -1197,6 +1256,8 @@
     if (state.maintainer) params.set('m', state.maintainer);
     if (state.eval) params.set('e', state.eval);
     if (state.view !== 'cards') params.set('v', state.view);
+    if (state.sortBy !== 'name') params.set('s', state.sortBy);
+    if (state.sortDir !== 'asc') params.set('sd', state.sortDir);
     const hash = params.toString();
     history.replaceState(null, '', hash ? '#' + hash : window.location.pathname);
   }
@@ -1232,6 +1293,16 @@
     if (params.get('v')) {
       state.view = params.get('v');
       switchView(state.view);
+    }
+    if (params.get('s')) {
+      state.sortBy = params.get('s');
+    }
+    if (params.get('sd')) {
+      state.sortDir = params.get('sd');
+    }
+    if (state.sortBy !== 'name' || state.sortDir !== 'asc') {
+      sortMatrix(state.sortBy, state.sortDir);
+      sortCompact(state.sortBy, state.sortDir);
     }
   }
 
@@ -1287,6 +1358,21 @@
         state.sortBy = field;
         state.sortDir = dir;
         sortMatrix(field, dir);
+        sortCompact(field, dir);
+        updateUrlHash();
+      });
+    });
+
+    // Sortable compact headers
+    document.querySelectorAll('.compact-header div[data-sort]').forEach(div => {
+      div.addEventListener('click', () => {
+        const field = div.dataset.sort;
+        const dir = state.sortBy === field && state.sortDir === 'asc' ? 'desc' : 'asc';
+        state.sortBy = field;
+        state.sortDir = dir;
+        sortCompact(field, dir);
+        sortMatrix(field, dir);
+        updateUrlHash();
       });
     });
 
