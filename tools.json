@@ -680,5 +680,39 @@
     ],
     "stars": 52700,
     "lastRelease": "2026-05"
+  },
+  {
+    "id": "sem",
+    "name": "sem",
+    "vendor": "Ataraxy-Labs/sem",
+    "url": "https://github.com/Ataraxy-Labs/sem",
+    "failure": "2+3",
+    "failureLabel": "FAIL MODES 02 + 03",
+    "tagline": "Rust CLI that diffs git changes at the entity level (functions, classes, methods) via tree-sitter across 28 languages. Replaces noisy line diffs with semantic deltas and exposes a `sem context` token-budgeted retrieval plus an MCP server for coding agents.",
+    "meta": {
+      "License": "Apache-2.0",
+      "Stars": "~2,500",
+      "Maintainers": "Team (22 contributors)",
+      "Distribution": "brew (sem-cli) · cargo · npm (@ataraxy-labs/sem) · Docker · GH releases",
+      "Languages": "28 via tree-sitter",
+      "Apple Silicon": "Native",
+      "Latest release": "v0.8.0 (Jun 2026)"
+    },
+    "maintainer": "team",
+    "language": "Rust",
+    "license": "Apache-2.0",
+    "indepEval": false,
+    "compactDesc": "Entity-level semantic git diffs + MCP context retrieval",
+    "observations": [
+      "Vendor headline (project site, Jun 2026): AI agents are 2.3x more accurate when given sem output versus raw line diffs. No independent third-party reproduction.",
+      "Mechanism: tree-sitter entity extraction plus structural hashing collapses verbose line diffs into entity-level deltas (\"function X modified\") usable by an agent without parsing patch hunks.",
+      "`sem context` returns a token-budgeted slice with target entity plus dependencies and dependents — same retrieval shape as other FAIL MODE 03 tools, but rooted in git history rather than a separate index.",
+      "MCP server ships in-tree, so agents invoke sem as a tool rather than scraping CLI output.",
+      "Commercial parent Ataraxy Labs ships related components (weave merge driver, inspect review, opensessions); OSS scope of sem could narrow if upstream pivots.",
+      "Binary name collides with GNU Parallel's `sem` (/usr/bin/sem); documented workaround required on systems with both installed (#77).",
+      "README badge advertises MIT, but the repository LICENSE file is Apache-2.0 — packaging inconsistency to be aware of for compliance review."
+    ],
+    "stars": 2513,
+    "lastRelease": "2026-06"
   }
 ]
