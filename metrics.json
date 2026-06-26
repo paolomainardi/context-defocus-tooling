@@ -1,23 +1,23 @@
 {
-  "updated": "2026-06-25T07:18:51.919696+00:00",
+  "updated": "2026-06-26T07:24:37.700895+00:00",
   "tools": {
     "rtk": {
-      "stars": 65872,
+      "stars": 66193,
       "lastRelease": "2026-06-12",
       "contributors": 113
     },
     "lean-ctx": {
-      "stars": 2911,
+      "stars": 2940,
       "lastRelease": "2026-06-24",
-      "contributors": 38
+      "contributors": 40
     },
     "Headroom": {
-      "stars": 50201,
+      "stars": 51312,
       "lastRelease": "2026-06-22",
-      "contributors": 136
+      "contributors": 138
     },
     "Context Mode": {
-      "stars": 18128,
+      "stars": 18193,
       "lastRelease": "2026-06-23",
       "contributors": 112
     },
@@ -27,92 +27,92 @@
       "contributors": 4
     },
     "Serena": {
-      "stars": 25761,
+      "stars": 25797,
       "lastRelease": "2026-05-26",
-      "contributors": 188
+      "contributors": 190
     },
     "CodeGraph": {
-      "stars": 54335,
+      "stars": 54755,
       "lastRelease": "2026-06-24",
       "contributors": 38
     },
     "Context+": {
-      "stars": 1925,
+      "stars": 1924,
       "lastRelease": "2026-05-02",
       "contributors": 13
     },
     "GitNexus": {
-      "stars": 42927,
+      "stars": 42993,
       "lastRelease": "2026-06-20",
       "contributors": 150
     },
     "code-review-graph": {
-      "stars": 18881,
+      "stars": 18914,
       "lastRelease": "2026-06-10",
       "contributors": 78
     },
     "tokensave": {
-      "stars": 255,
+      "stars": 271,
       "lastRelease": "2026-06-24",
       "contributors": 19
     },
     "Claude Context": {
-      "stars": 11953,
+      "stars": 11966,
       "lastRelease": "2026-06-22",
       "contributors": 26
     },
     "MCP Language Server": {
-      "stars": 1556,
+      "stars": 1559,
       "lastRelease": "2025-05-16",
       "contributors": 4
     },
     "Semble": {
-      "stars": 5386,
+      "stars": 5401,
       "lastRelease": "2026-06-23",
       "contributors": 7
     },
     "Token Savior": {
-      "stars": 1013,
+      "stars": 1015,
       "lastRelease": "2026-05-18",
       "contributors": 7
     },
     "Caveman": {
-      "stars": 76676,
+      "stars": 77009,
       "lastRelease": "2026-06-12",
       "contributors": 29
     },
     "claude-token-optimizer": {
-      "stars": 477,
+      "stars": 480,
       "lastRelease": "2026-06-22",
       "contributors": 2
     },
     "claude-token-efficient": {
-      "stars": 5696,
+      "stars": 5705,
       "lastRelease": "2026-06-16",
       "contributors": 6
     },
     "memsearch": {
-      "stars": 2118,
+      "stars": 2133,
       "lastRelease": "2026-06-22",
       "contributors": 17
     },
     "ClaudeMem": {
-      "stars": 84190,
+      "stars": 84346,
       "lastRelease": "2026-06-21",
       "contributors": 121
     },
     "token-optimizer": {
-      "stars": 1438,
-      "lastRelease": "2026-06-24",
+      "stars": 1447,
+      "lastRelease": "2026-06-25",
       "contributors": 9
     },
     "graphify": {
-      "stars": 71748,
-      "lastRelease": "2026-06-24",
-      "contributors": 98
+      "stars": 72237,
+      "lastRelease": "2026-06-25",
+      "contributors": 101
     },
     "sem": {
-      "stars": 2981,
+      "stars": 2985,
       "lastRelease": "2026-06-23",
       "contributors": 28
     }
